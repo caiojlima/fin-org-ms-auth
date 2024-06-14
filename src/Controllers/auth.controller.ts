@@ -17,4 +17,11 @@ export class UserController {
   ): Promise<User> {
     return this.userService.createUser(userData);
   }
+
+  @Post('signIn')
+  async signinUser(
+    @Body() userData: { email: string, password: string },
+  ): Promise<{ token: string }> {
+    return this.userService.signIn(userData.email, userData.password);
+  }
 }
